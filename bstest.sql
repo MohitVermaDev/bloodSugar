@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 25, 2020 at 03:18 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Host: localhost:3306
+-- Generation Time: Apr 25, 2020 at 04:05 PM
+-- Server version: 5.6.41-84.1-log
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bstest`
+-- Database: `auayurve_bloodapp`
 --
 
 -- --------------------------------------------------------
@@ -30,11 +31,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbladmins` (
   `id` bigint(20) NOT NULL,
   `admin_id` bigint(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `password` varchar(191) NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,8 +43,7 @@ CREATE TABLE `tbladmins` (
 --
 
 INSERT INTO `tbladmins` (`id`, `admin_id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Admin', 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-04-25 11:37:54', '2020-04-25 11:37:54'),
-(2, 1, 'Mohit Verma', 'mohitverma.may@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-04-25 12:36:56', '2020-04-25 12:36:56');
+(1, 0, 'Admin', 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-04-25 11:37:54', '2020-04-25 11:37:54');
 
 -- --------------------------------------------------------
 
@@ -53,11 +53,11 @@ INSERT INTO `tbladmins` (`id`, `admin_id`, `name`, `email`, `password`, `created
 
 CREATE TABLE `tblsettings` (
   `id` int(11) NOT NULL,
-  `setting_name` varchar(255) NOT NULL,
-  `setting_value` varchar(255) NOT NULL,
+  `setting_name` varchar(191) NOT NULL,
+  `setting_value` varchar(191) NOT NULL,
   `updated_by` int(11) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -75,12 +75,12 @@ INSERT INTO `tblsettings` (`id`, `setting_name`, `setting_value`, `updated_by`, 
 
 CREATE TABLE `tblusers` (
   `id` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `password` varchar(250) DEFAULT NULL,
-  `token` varchar(250) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `password` varchar(191) DEFAULT NULL,
+  `token` varchar(191) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -88,9 +88,7 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`id`, `name`, `email`, `password`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'Mohit Verma', 'mohitverma.may0@gmail.com', '202cb962ac59075b964b07152d234b70', '5ea320b423541', '2020-04-24 16:33:41', '2020-04-24 17:24:04'),
-(2, 'Sandeep', 'sandeepriwebsoftindia@gmail.com', '202cb962ac59075b964b07152d234b70', '5ea3225a44c7a', '2020-04-24 17:30:58', '2020-04-24 17:31:06'),
-(3, 'Manish', 'manish@man.com', '202cb962ac59075b964b07152d234b70', '5ea3da2473e54', '2020-04-25 06:34:30', '2020-04-25 06:35:16');
+(1, 'Mohit Verma', 'mohitverma.may0@gmail.com', '202cb962ac59075b964b07152d234b70', '5ea451327e3c8', '2020-04-25 15:02:52', '2020-04-25 15:03:14');
 
 -- --------------------------------------------------------
 
@@ -102,9 +100,9 @@ CREATE TABLE `tbl_bs` (
   `id` bigint(11) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `bs_level` decimal(20,2) NOT NULL,
-  `status` int(11) DEFAULT 0,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `status` int(11) DEFAULT '0',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -112,8 +110,7 @@ CREATE TABLE `tbl_bs` (
 --
 
 INSERT INTO `tbl_bs` (`id`, `user_id`, `bs_level`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, '10.00', 1, '2020-04-25 13:15:43', '2020-04-25 17:02:52'),
-(2, 1, '5.00', 1, '2020-04-25 17:05:17', '2020-04-25 17:16:04');
+(1, 1, '5.00', 1, '2020-04-25 21:30:08', '2020-04-25 21:35:07');
 
 -- --------------------------------------------------------
 
@@ -127,18 +124,10 @@ CREATE TABLE `tbl_prescription` (
   `file_name` text NOT NULL,
   `file_size` text NOT NULL,
   `file` text NOT NULL,
-  `description` text DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `description` text,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_prescription`
---
-
-INSERT INTO `tbl_prescription` (`id`, `user_id`, `file_name`, `file_size`, `file`, `description`, `created_at`, `updated_at`) VALUES
-(1, 1, '360827', '488240', '1587819974360827.jpg', 'he', '2020-04-25 18:36:14', '2020-04-25 18:36:14'),
-(2, 1, '360827', '488240', '1587820313360827.jpg', 'ggghgh', '2020-04-25 18:41:53', '2020-04-25 18:41:53');
 
 --
 -- Indexes for dumped tables
@@ -196,19 +185,19 @@ ALTER TABLE `tblsettings`
 -- AUTO_INCREMENT for table `tblusers`
 --
 ALTER TABLE `tblusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_bs`
 --
 ALTER TABLE `tbl_bs`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_prescription`
 --
 ALTER TABLE `tbl_prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
