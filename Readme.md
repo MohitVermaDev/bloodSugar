@@ -18,17 +18,17 @@
 
 3 Add Your Url
   > Open autoload.php file from root folder and add you url.
-    define('weburl','http://localhost/foldername');
+    define('weburl','http://yourdomainname.com');
 
 
 # URLs and Credentials
 1 Admin
-  http://localhost/foldername/admin
+  http://yourdomainname.com/admin/
   Login: admin@gmail.com
   Password: 123
 
 
 2 User
-  http://localhost/foldername/
+  http://yourdomainname.com/
   Register Your Account and
   Verify Your Mail
